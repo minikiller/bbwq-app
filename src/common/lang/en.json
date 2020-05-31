@@ -2,7 +2,7 @@
   "main": {
     "hello": "Hello",
     "language": "en",
-    "confirm": "are you true"
+    "confirm": "are you sure"
   },
   "router": {
     "maybe": "Maybe"
