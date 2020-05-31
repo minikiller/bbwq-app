@@ -1,0 +1,10 @@
+{
+  "main": {
+    "hello": "Hello",
+    "language": "en",
+    "confirm": "are you true"
+  },
+  "router": {
+    "maybe": "Maybe"
+  }
+}
