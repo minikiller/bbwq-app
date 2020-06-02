@@ -1,5 +1,5 @@
 import { userService } from '../_services';
-import { router } from '../_helpers';
+import { router } from '@/router';
 
 const user = JSON.parse(sessionStorage.getItem('user'));
 const state = user

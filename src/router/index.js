@@ -3,6 +3,8 @@ import Router from "vue-router";
 import Lang from "@/components/Lang";
 import HelloWorld from "@/components/HelloWorld";
 import HomePage from "@/views/home/HomePage";
+import LoginPage from "@/views/login/LoginPage";
+import Card from "@/components/Card";
 // import RegisterPage from "@/views/register/RegisterPage";
 // import PlayPage from "@/views/play/PlayPage";
 // import KifuPage from "@/views/kifu/KifuPage";
@@ -14,20 +16,18 @@ import "nprogress/nprogress.css";
 
 Vue.use(Router);
 
-export default new Router({
+export const router = new Router({
   mode: "history",
   routes: [
-    // {
-    //   name: "login",
-    //   path: "/login",
-    //   component: LoginPage
-    // },
-    { name: "home",path: "/", component: HomePage },
+    { name: "login", path: "/login", component: LoginPage },
+    { name: "home", path: "/", component: HomePage },
     // { name: "register",path: "/register", component: RegisterPage },
     // { name: "play",path: "/play/:game_id", component: PlayPage, props: true },
     // { name: "game",path: "/creategame", component: CreateGamePage },
     // { name: "kifu",path: "/kifu", component: KifuPage },
     // { name: "profile",path: "/profile", component: ProfilePage },
+    { name: "lang", path: "/lang", component: Lang },
+    { name: "card", path: "/card", component: Card },
 
     // otherwise redirect to home
     { path: "*", redirect: "/" }

@@ -1,78 +1,57 @@
 <template>
-  <b-navbar v-if="account.user" toggleable="lg" type="dark" variant="info">
-    <b-container>
-      <b-navbar-brand href="#">{{ games.navTitle }}</b-navbar-brand>
-      <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
-      <b-collapse id="nav-collapse" is-nav>
-        <b-navbar-nav>
-          <b-nav-item href="/creategame">新建對局</b-nav-item>
-          <b-nav-item href="/">对局日程</b-nav-item>
-          <b-nav-item href="/kifu">我的棋谱</b-nav-item>
-          <b-nav-item href="/kifu">我的棋友</b-nav-item>
-        </b-navbar-nav>
-        <b-navbar-nav class="ml-auto">
-          <b-nav-text>
-            <div v-if="account.user">
-              <b-avatar variant="info" :src="account.user.avatar"></b-avatar>
-              {{ account.user.name }}[6D]
-            </div>
-          </b-nav-text>
-          <b-nav-item href="/profile">修改个人信息</b-nav-item>
-          <b-nav-item @click="logout">退出</b-nav-item>
-        </b-navbar-nav>
-        <!--
-              <template slot="button-content">
-                {{ account.user.name }}
-              </template>
-              <b-dropdown-item>
-                <router-link :to="{ path: '/' }" replace>首页</router-link>
-              </b-dropdown-item>
-              <b-dropdown-item>
-                <router-link :to="{ path: '/game' }" replace
-                  >创建新游戏</router-link
-                >
-              </b-dropdown-item>
-              <b-dropdown-item href="/kifu">
-                我的棋谱
-              </b-dropdown-item>
-              <b-dropdown-item @click="logout">退出</b-dropdown-item>
-            </b-nav-item-dropdown>
-          </b-navbar-nav>
-        -->
-      </b-collapse>
-    </b-container>
-  </b-navbar>
-</template>
-<script>
-import { mapState } from "vuex";
-import { userService } from "../_services";
-export default {
-  name: "navBar",
-  computed: {
-    ...mapState({
-      account: state => state.account,
-      games: state => state.games
-    })
-  },
-  data() {
-    return {
-      meal: ""
-    };
-  },
-  methods: {
-    getMeal() {
-      //   ...
-    },
-    logout() {
-      userService.logout();
-      location.reload(true);
-    }
-  }
-};
-</script>
+  <div>
+   <el-menu
+  :default-active="activeIndex2"
+  class="el-menu-demo"
+  mode="horizontal"
+  @select="handleSelect"
+  background-color="#545c64"
+  text-color="#fff"
+  active-text-color="#ffd04b">
+  <el-menu-item index="1">处理中心</el-menu-item>
+  <el-submenu index="2">
+    <template slot="title">我的工作台</template>
+    <el-menu-item index="2-1">选项1</el-menu-item>
+    <el-menu-item index="2-2">选项2</el-menu-item>
+    <el-menu-item index="2-3">选项3</el-menu-item>
+    <el-submenu index="2-4">
+      <template slot="title">选项4</template>
+      <el-menu-item index="2-4-1">选项1</el-menu-item>
+      <el-menu-item index="2-4-2">选项2</el-menu-item>
+      <el-menu-item index="2-4-3">选项3</el-menu-item>
+    </el-submenu>
+  </el-submenu>
+  <el-menu-item index="3" disabled>消息中心</el-menu-item>
+  <el-menu-item index="4"><a href="https://www.ele.me" target="_blank">订单管理</a></el-menu-item>
+</el-menu>
 
-<style scoped>
-.li.navbar-text {
-  padding: 8px;
+  </div>
+</template>
+
+<style>
+.el-header {
+  background-color: #b3c0d1;
+  color: #333;
+  line-height: 60px;
+}
+
+.el-aside {
+  color: #333;
 }
 </style>
+
+<script>
+export default {
+  data() {
+      return {
+        activeIndex: '1',
+        activeIndex2: '1'
+      };
+    },
+    methods: {
+      handleSelect(key, keyPath) {
+        console.log(key, keyPath);
+      }
+    }
+};
+</script>
