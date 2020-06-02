@@ -1,7 +1,7 @@
 <template>
   <div>
     show me
-    <b-button @click="test">click</b-button>
+    <el-button @click="test">click</el-button>
   </div>
 </template>
 <script>

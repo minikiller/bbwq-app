@@ -3,6 +3,9 @@ const path = require('path')
 const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
+const NODE_API_ENV = process.env.NODE_API_ENV || "https://localhost:5000";
+const NODE_SOCKET_ENV = process.env.NODE_SOCKET_ENV || "https://localhost:3000";
+
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -78,5 +81,12 @@ module.exports = {
     net: 'empty',
     tls: 'empty',
     child_process: 'empty'
-  }
+  },
+  externals: {
+    // global app config object
+    config: JSON.stringify({
+      apiUrl: NODE_API_ENV,
+      socketUrl: NODE_SOCKET_ENV,
+    }),
+  },
 }
