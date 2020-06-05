@@ -1,0 +1,135 @@
+<div>
+  <b-container class="bv-example-row" width="100%">
+    <b-row>
+      <b-col>
+        <b-card no-body>
+          <b-tabs
+            content-class="mt-3"
+            fill
+            active-nav-item-class="font-weight-bold text-uppercase text-danger"
+            active-tab-class="font-weight-bold text-success"
+          >
+            <b-tab title="对局" active>
+              <div class="form-group">
+                <button
+                  v-if="isOpponent"
+                  aria-pressed="true"
+                  class="btn btn-primary"
+                  @click="begin"
+                  ref="btnResign"
+                  :disabled="btnBeginDisable"
+                >
+                  {{ btnText }}
+                </button>
+                <button class="btn btn-primary" v-if="canEnd" @click="getScore">
+                  {{ endText }}
+                </button>
+                <button
+                  class="btn btn-primary"
+                  :disabled="btnPassedDisable"
+                  v-if="canBegin"
+                  @click="passed"
+                >
+                  终局
+                </button>
+                <!-- <button class="btn btn-primary" @click="test">test</button> -->
+                <button
+                  class="btn btn-primary"
+                  :disabled="btnQuitDisable"
+                  @click="exit"
+                  ref="quit"
+                  id="quit"
+                >
+                  退出
+                </button>
+                <b-form-checkbox
+                  id="checkbox-1"
+                  v-model="status"
+                  name="checkbox-1"
+                  value="true"
+                  unchecked-value="false" @change="toggleAll"
+                >
+                  显示坐标
+                </b-form-checkbox>
+                <b-form-checkbox
+                  id="checkbox-2"
+                  name="checkbox-2"
+                  value="true"
+                  unchecked-value="false" @change="toggleMarker"
+                >
+                  显示手数
+                </b-form-checkbox>
+              </div>
+              <my-go
+                v-if="game"
+                :total_time="game.total_time.toString()"
+                :blackOne="game.blackone_id"
+                :whiteOne="game.whiteone_id"
+                :blackTwo="game.blacktwo_id"
+                :whiteTwo="game.whitetwo_id"
+                :gameStatus="game.status"
+              />
+            </b-tab>
+
+            <b-tab title="视频">
+              <div class>
+                <vue-webrtc
+                  ref="webrtc"
+                  width="100%"
+                  :isOpponent="isOpponent"
+                  :userId="account.user.name"
+                  :roomId="game_id"
+                  v-on:joined-room="logEvent"
+                  v-on:left-room="logEvent"
+                  v-on:open-room="logEvent"
+                  v-on:share-started="logEvent"
+                  v-on:share-stopped="logEvent"
+                  @error="onError"
+                />
+              </div>
+              <div class="row">
+                <div class="col-md-12 my-3">
+                  <b-button variant="primary" @click="onJoin">
+                    <b-icon icon="camera-video"></b-icon>&nbsp加入
+                  </b-button>
+                  <b-button variant="primary" @click="onLeave">
+                    <b-icon icon="camera-video-fill"></b-icon>&nbsp离开
+                  </b-button>
+                  <!-- <button
+                  type="button"
+                  class="btn btn-primary"
+                  @click="onCapture"
+                >
+                  Capture Photo
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  @click="onShareScreen"
+                >
+                  Share Screen
+                </button> -->
+                </div>
+              </div>
+              <!-- <my-video :gameId="game_id"></my-video> -->
+            </b-tab>
+            <b-tab title="聊天">
+              <chat v-if="game" :gameId="game_id" :gameInfo="game" />
+            </b-tab>
+            <b-tab title="观众">
+              <b-list-group
+                v-for="(user, index) in games.onlineUsers"
+                :key="index"
+              >
+                <b-list-group-item>
+                  <b-avatar variant="info" :src="user.avatar"></b-avatar>
+                  {{ user }}
+                </b-list-group-item>
+              </b-list-group>
+            </b-tab>
+          </b-tabs>
+        </b-card>
+      </b-col>
+    </b-row>
+  </b-container>
+</div>
