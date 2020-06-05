@@ -1,4 +1,4 @@
-{
+/* {
   "presets": [
     ["env", {
       "modules": false,
@@ -9,4 +9,19 @@
     "stage-2"
   ],
   "plugins": ["transform-vue-jsx", "transform-runtime"]
+} */
+{
+  "presets": [
+    "es2015",
+    "es2016",
+    "stage-2"
+  ],
+  "plugins": [
+    "transform-async-to-generator",
+    "transform-class-properties",
+    "transform-object-rest-spread",
+    "transform-export-extensions",
+    "transform-runtime",
+    "lodash"
+  ]
 }
