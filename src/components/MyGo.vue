@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { initGame, initResumeGame, initGameData } from "../_helpers";
+import { initGame, initResumeGame, initGameData } from "@/_helpers";
 import { mapState, mapMutations } from "vuex";
 
 export default {
@@ -60,5 +60,5 @@ export default {
 };
 </script>
 <style scoped>
-@import "/static/wgo.player.css";
+/* @import "@/assets/wgo.player.css"; */
 </style>

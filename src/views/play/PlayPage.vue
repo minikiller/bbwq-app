@@ -1,12 +1,12 @@
 <template src="./PlayPage.html"></template>
 <script>
-import MyGo from "../component/MyGo";
-import Chat from "../component/Chat";
-import MyVideo from "../component/MyVideo";
-import WebRTC from "../component/webrtc";
-import { gameService } from "../_services";
+import MyGo from "@/components/MyGo";
+import Chat from "@/components/Chat";
+import MyVideo from "@/components/MyVideo";
+import WebRTC from "@/components/webrtc";
+import { gameService } from "@/_services";
 import { mapState, mapMutations } from "vuex";
-import { EventBus } from "../index.js";
+import { EventBus } from "@/main.js";
 import {
   enable_board,
   initGameData,
@@ -17,7 +17,7 @@ import {
   gameResign,
   toggleCoordinates,
   showMarker,
-} from "../_helpers";
+} from "@/_helpers";
 
 // import { WebRTC } from "plugin";
 import { find, head } from "lodash/core";

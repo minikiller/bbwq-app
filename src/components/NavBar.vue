@@ -45,7 +45,7 @@
 </template>
 <script>
 import { mapState } from "vuex";
-import { userService } from "../_services";
+import { userService } from "@/_services";
 export default {
   name: "navBar",
   computed: {

@@ -1,4 +1,4 @@
-import { gamesService } from "../_services";
+import { gamesService } from "@/_services";
 
 const state = {
   onlineUsers: [],

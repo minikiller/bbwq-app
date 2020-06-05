@@ -9,8 +9,8 @@
 </template>
 <script>
 import config from "config";
-import { authHeader, handleResponse } from "../_helpers";
-import { userService } from "../_services";
+import { authHeader, handleResponse } from "@/_helpers";
+import { userService } from "@/_services";
 import { mapState, mapMutations } from "vuex";
 export default {
   computed: {

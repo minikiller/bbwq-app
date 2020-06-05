@@ -1,8 +1,5 @@
 import Vue from 'vue'
 
-
-
-
 const state = {
   message: null,
 };

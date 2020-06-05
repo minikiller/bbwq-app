@@ -14,7 +14,7 @@
   </div>
 </template>
 <script>
-import { initGame, beginGame } from "../_helpers";
+import { initGame, beginGame } from "@/_helpers";
 import { mapState, mapMutations } from "vuex";
 
 export default {

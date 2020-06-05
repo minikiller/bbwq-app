@@ -6,9 +6,9 @@
   </div>
 </template>
 <script>
-import Card from "../component/Card.vue";
+import Card from "@/components/Card.vue";
 import { mapState, mapMutations } from "vuex";
-import Navbar from "../component/NavBar.vue";
+import Navbar from "@/components/NavBar.vue";
 
 export default {
   name: "home",

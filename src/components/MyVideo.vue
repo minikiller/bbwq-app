@@ -5,7 +5,7 @@
   </div>
 </template>
 <script>
-import { connection } from "../_helpers";
+import { connection } from "@/_helpers";
 import { mapState, mapMutations } from "vuex";
 
 export default {

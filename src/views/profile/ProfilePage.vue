@@ -22,7 +22,7 @@
 
 <script>
 // import ImageInput from '../component/ImageInput.vue';
-import { userService } from "../_services";
+import { userService } from "@/_services";
 import { mapState, mapActions } from "vuex";
 export default {
   name: 'app',

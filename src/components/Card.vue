@@ -100,7 +100,7 @@
   </b-container>
 </template>
 <script>
-import { gameService } from "../_services";
+import { gameService } from "@/_services";
 import { mapState, mapMutations } from "vuex";
 export default {
   name: "card",
